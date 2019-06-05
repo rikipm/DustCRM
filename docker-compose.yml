@@ -1,0 +1,32 @@
+version: '3'
+services:
+  php:
+    image: yiisoftware/yii2-php:7.1-apache #Use official Yii2 php package with required extensions
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '80:80'
+    depends_on:
+      - db
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dustcrm
+      MYSQL_USER: yii2
+      MYSQL_PASSWORD: password
+    ports:
+      - 33060:3306
+#    volumes: # Commented because https://github.com/docker-library/mariadb/issues/38
+#      - ./db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+  redis:
+    image: redis:latest
