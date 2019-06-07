@@ -5,8 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\widgets\Menu;
@@ -29,34 +28,30 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Menu::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
+        echo Menu::widget([
+            'options'=>['class'=>'sidebar-menu'],
+            'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span>{right-icon}{badge}</a>',
+            'submenuTemplate'=>"\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
+            'activateParents'=>true,
+            'items' => [
+                [
+                    'label'=>Yii::t('app', "User"),
+                    'options' => ['class' => 'header']
+                ],
+                Yii::$app->user->isGuest ? (
+                    [
+                        'label' => Yii::t('app', 'Login'),
+                        'url' => Url::to(['site/login']),
+                    ]
+                    ) : (
+                    [
+                        'label' => Yii::t('app', 'Logout').' ('.Yii::$app->user->identity->username.')',
+                        'url' => Url::to(['site/logout']),
+                        'template' => '<a href="{url}" data-method="post">{icon}<span>{label}</span>{right-icon}{badge}</a>', //POST request
+                    ]
+                    )
+            ],
+        ]);
     ?>
 
     <div class="container">
@@ -67,14 +62,6 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>
