@@ -20,6 +20,8 @@ $this->title = $name;
             <p>
                 <?= nl2br(Html::encode($message)) ?>
             </p>
+
+            <a href="/">На главную</a>
         </div>
     </div>
 
