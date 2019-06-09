@@ -7,6 +7,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'dustcrm',
+    'name' => 'DustCRM',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'sourceLanguage' => 'en-US',
@@ -66,7 +67,6 @@ $config = [
                 ],
             ],
         ],
-
     ],
 
     'as globalAccess'=>[
