@@ -6,7 +6,7 @@ git clone --recursive https://github.com/rikipm/dustcrm.git
 
 2.Rename file `sample.env` to `.env`
 
-3.In file`.env` change `password` and `root_password` to your own
+3.In file`.env` change `DB_PASSWORD`, `DB_ROOT_PASSWORD` and `COOKIE_VALIDATION_KEY` to your own
 
 4.Run commands
 ```
