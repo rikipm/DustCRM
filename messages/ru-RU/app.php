@@ -11,4 +11,12 @@ return [
     'Login' => 'Войти',
     'Logout' => 'Выйти',
     'Profile' => 'Профиль',
+
+    'Username' => 'Никнейм',
+    'Status' => 'Статус',
+    'Locale' => 'Локаль',
+    'theme' => 'Тема',
+    'Created at' => 'Создано',
+    'Updated at' => 'Обновлено',
+    'Last login' => 'Последний вход',
 ];

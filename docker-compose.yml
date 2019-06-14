@@ -1,6 +1,6 @@
 version: '3'
 services:
-  php:
+  app:
     image: yiisoftware/yii2-php:7.1-apache #Use official Yii2 php package with required extensions
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
@@ -12,18 +12,16 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: dustcrm
-      MYSQL_USER: yii2
-      MYSQL_PASSWORD: password #TODO: add random password
-    ports:
-      - 33060:3306
-#    volumes: # Commented because https://github.com/docker-library/mariadb/issues/38
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+#    volumes: # Uncomment this line if you want store database on host machine
 #      - ./db:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     ports:
       - 8080:80
     depends_on:

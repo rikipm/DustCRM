@@ -23,8 +23,8 @@ $config = [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => 'redis',
-            'port' => 6379,
+            'hostname' => getenv('REDIS_HOSTNAME'),
+            'port' => getenv('REDIS_PORT'),
         ],
         'cache' => [
               'class' => 'yii\redis\Cache',
