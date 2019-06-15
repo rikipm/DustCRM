@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
-    'senderEmail' => 'noreply@example.com',
-    'senderName' => 'Example.com mailer',
+    'availableLocales'=>[
+        'en-US'=>'English (US)',
+        'ru-RU'=>'Русский (РФ)',
+    ],
 ];
