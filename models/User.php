@@ -12,6 +12,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS = ['active' => 1, 'inactive' => 0];
 
+    public $new_password;
+
     /**
      * @inheritdoc
      */
@@ -26,11 +28,20 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
-            [['locale'], 'default', 'value' => 'en-US'],
-            [['theme'], 'default', 'value' => 'skin-blue'],
-            [['username'], 'unique'],
+            ['status', 'boolean'],
+            [['username', 'new_password'], 'string', 'max' => 255],
+
+            ['username', 'required'],
+            ['username', 'unique'],
+
+            ['new_password', 'required', 'on' => 'create'],
+            ['new_password', 'string', 'min' => 6],
+
+            ['locale', 'default', 'value' => 'en-US'],
+            ['theme', 'default', 'value' => 'skin-blue'],
             ['status', 'default', 'value' => self::STATUS['active']],
+            [['new_password'], 'safe'],
+
         ];
     }
 
@@ -58,9 +69,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'username' => Yii::t('app', 'Username'),
+            'new_password' => Yii::t('app', 'Password'),
             'status' => Yii::t('app', 'Status'),
             'locale' => Yii::t('app', 'Locale'),
-            'theme' => Yii::t('app', 'Skin'),
+            'theme' => Yii::t('app', 'Theme'),
             'created_at' => Yii::t('app', 'Created at'),
             'updated_at' => Yii::t('app', 'Updated at'),
             'logged_at' => Yii::t('app', 'Last login'),
@@ -136,6 +148,18 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function setPassword($password)
     {
-        $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($password);
+        $this->password = Yii::$app->getSecurity()->generatePasswordHash($password);
+    }
+
+   /**
+    * {@inheritdoc}
+    */
+    public function beforeSave($insert)
+    {
+        if(!empty($this->new_password))
+        {
+            $this->setPassword($this->new_password);
+        }
+        return parent::beforeSave($insert);
     }
 }

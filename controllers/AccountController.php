@@ -17,6 +17,8 @@ use Yii;
 
 class AccountController extends Controller
 {
+    public $layout = 'main-login';
+
     /**
      * {@inheritdoc}
      */

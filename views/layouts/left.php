@@ -16,8 +16,13 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
+                    ['label' => Yii::t('app', 'CRM Core'), 'options' => ['class' => 'header']],
+                    [
+                        'label' => Yii::t('app', 'Users'),
+                        'icon' => 'users', 'url' => ['/user'],
+                        'active'=> Yii::$app->controller->id == 'user'
+                    ],
+                    ['label' => Yii::t('app', 'Developer utilities'), 'options' => ['class' => 'header']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     [
                         'label' => 'Some tools',

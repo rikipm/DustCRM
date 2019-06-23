@@ -30,10 +30,9 @@ class m190610_170428_create_user_table extends Migration
         $admin = new User();
         $admin->username = 'admin';
         $admin->password = Yii::$app->getSecurity()->generatePasswordHash('admin');
-        $admin->auth_key = '';
         if(!$admin->save())
         {
-            throw new \yii\db\Exception('Cant create admin account('.$admin->getErrors()[0].')');
+            throw new \yii\db\Exception('Cant create admin account('.$admin->getErrorSummary(true)[0].')');
         }
     }
 

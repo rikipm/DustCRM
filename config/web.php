@@ -12,10 +12,12 @@ $config = [
     'bootstrap' => ['log'],
     'sourceLanguage' => 'en-US',
     'language' => 'ru-RU',
+    'timeZone' => getenv('TIMEZONE'),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'layout' => 'box',
     'components' => [
         'assetManager' => [
             'bundles' => [
@@ -99,13 +101,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        'allowedIPs' => ['*', '::1'],
+        'allowedIPs' => [getenv('YII_DEBUG_IP')],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['*', '::1'],
+        'allowedIPs' => [getenv('YII_DEBUG_IP')],
     ];
 }
 

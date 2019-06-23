@@ -13,6 +13,8 @@ git clone --recursive https://github.com/rikipm/dustcrm.git
 docker-compose up -d
 docker-compose exec app yii migrate --interactive=0
 ```
+
+5.Enter as admin by credentials `admin/admin` and change admin password
 ## Deploy without docker:
 1.Install LAMP/LEMP stack and redis
 
@@ -31,3 +33,5 @@ git clone --recursive https://github.com/rikipm/dustcrm.git
 ```
 yii migrate
 ```
+
+7.Enter as admin by credentials `admin/admin` and change admin password
