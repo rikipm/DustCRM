@@ -30,12 +30,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['style'=>'width: 60px;'], // <-- right here
             ],
             'username',
-            'status',
+            [
+                'attribute' => 'status',
+                'headerOptions' => ['style' => 'width: 70px;'],
+                'value' => function($model)
+                {
+                    return ''; //Hide value
+                },
+                'contentOptions' => function($model)
+                {
+                    return $model->status ? ['class' => 'glyphicon glyphicon-ok text-success'] : ['class' => 'glyphicon glyphicon-remove text-danger'];
+                }
+            ],
+
 
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{update} {delete}',
-                'contentOptions'=>['style'=>'width: 70px;'],
+                'headerOptions'=>['style'=>'width: 70px;'],
 
             ],
         ],
