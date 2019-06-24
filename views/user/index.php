@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             [
                 'attribute' => 'status',
-                'headerOptions' => ['style' => 'width: 70px;'],
+                'headerOptions' => ['style' => 'width: 140px;'],
                 'value' => function($model)
                 {
                     return ''; //Hide value
@@ -40,7 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => function($model)
                 {
                     return $model->status ? ['class' => 'glyphicon glyphicon-ok text-success'] : ['class' => 'glyphicon glyphicon-remove text-danger'];
-                }
+                },
+                'filter' => [
+                    User::STATUS['active']=>Yii::t('app','Active'),
+                    User::STATUS['inactive']=>Yii::t('app','Inactive')
+                ],
             ],
 
 

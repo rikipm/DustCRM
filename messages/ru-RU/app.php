@@ -18,6 +18,8 @@ return [
     'Username' => 'Никнейм',
     'Password' => 'Пароль',
     'Status' => 'Статус',
+    'Active' => 'Активно',
+    'Inactive' => 'Неактивно',
     'Locale' => 'Локаль',
     'Theme' => 'Тема',
     'Created at' => 'Создано',
