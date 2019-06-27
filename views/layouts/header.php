@@ -170,7 +170,7 @@ use yii\helpers\Html;
                             <div class="pull-right">
                                 <?= Html::a(
                                     Yii::t('app', 'Logout'),
-                                    ['/account/logout'],
+                                    ['/auth/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
                             </div>

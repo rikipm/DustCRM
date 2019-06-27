@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use Yii;
 
-class AccountController extends Controller
+class AuthController extends Controller
 {
     public $layout = 'main-login';
 
