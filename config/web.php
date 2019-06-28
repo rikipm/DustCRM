@@ -9,7 +9,7 @@ $config = [
     'id' => 'dustcrm',
     'name' => 'DustCRM',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'languageManager'],
     'sourceLanguage' => 'en-US',
     'language' => 'ru-RU',
     'timeZone' => getenv('TIMEZONE'),
@@ -42,6 +42,9 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['auth/login'],
+        ],
+        'languageManager' => [
+            'class' => 'app\components\LanguageManager',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
