@@ -19,8 +19,10 @@ use Yii;
  */
 class LanguageManager extends Component
 {
+    public $allowedLanguages = ['en-US'];
     public function init()
     {
-        Yii::$app->language = Yii::$app->user->identity->locale;
+        if(!Yii::$app->user->isGuest)
+            Yii::$app->language = Yii::$app->user->identity->locale;
     }
 }

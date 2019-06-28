@@ -45,6 +45,7 @@ $config = [
         ],
         'languageManager' => [
             'class' => 'app\components\LanguageManager',
+            'allowedLanguages' => ['en-US', 'ru-RU'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
