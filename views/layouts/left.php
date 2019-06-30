@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -19,7 +24,7 @@
                     ['label' => Yii::t('app', 'CRM Core'), 'options' => ['class' => 'header']],
                     [
                         'label' => Yii::t('app', 'Users'),
-                        'icon' => 'users', 'url' => ['/user'],
+                        'icon' => 'users', 'url' => [Url::to(['user/index'])],
                         'active'=> Yii::$app->controller->id == 'user'
                     ],
                     ['label' => Yii::t('app', 'Developer utilities'), 'options' => ['class' => 'header']],
