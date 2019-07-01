@@ -20,6 +20,10 @@ use Yii;
 class LanguageManager extends Component
 {
     public $allowedLanguages = ['en-US'];
+
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         if(!Yii::$app->user->isGuest)
