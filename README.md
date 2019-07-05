@@ -11,6 +11,7 @@ git clone --recursive https://github.com/rikipm/dustcrm.git
 4.Run commands
 ```
 docker-compose up -d
+docker-compose exec app composer update
 docker-compose exec app yii migrate --interactive=0
 ```
 
@@ -23,15 +24,20 @@ docker-compose exec app yii migrate --interactive=0
 git clone --recursive https://github.com/rikipm/dustcrm.git
 ```
 
-3.Rename file `sample.env` to `.env`
+3.Update composer dependincies
+```
+composer update
+```
 
-4.In `.env` file configure database and redis connection
+4.Rename file `sample.env` to `.env`
 
-5.Configure your web-server to `/web` folder
+5.In `.env` file configure database and redis connection
 
-6.Apply migrations
+6.Configure your web-server to `/web` folder
+
+7.Apply migrations
 ```
 yii migrate
 ```
 
-7.Enter as admin by credentials `admin/admin` and change admin password
+8.Enter as admin by credentials `admin/admin` and change admin password
