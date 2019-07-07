@@ -5,7 +5,7 @@ $config = [
     'dsn' => env('DB_DSN'),
     'username' => env('DB_USERNAME'),
     'password' => env('DB_PASSWORD'),
-    'tablePrefix' => getenv('DB_TABLE_PREFIX'),
+    'tablePrefix' => env('DB_TABLE_PREFIX'),
     'charset' => 'utf8',
 ];
 

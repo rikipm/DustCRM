@@ -12,7 +12,7 @@ $config = [
     'bootstrap' => ['log', 'languageManager'],
     'sourceLanguage' => 'en-US',
     'language' => 'ru-RU',
-    'timeZone' => getenv('TIMEZONE'),
+    'timeZone' => env('TIMEZONE'),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -32,8 +32,8 @@ $config = [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => getenv('REDIS_HOSTNAME'),
-            'port' => getenv('REDIS_PORT'),
+            'hostname' => env('REDIS_HOSTNAME'),
+            'port' => env('REDIS_PORT'),
         ],
         'cache' => [
               'class' => 'yii\redis\Cache',
@@ -66,7 +66,14 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => env('DB_DSN'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'tablePrefix' => env('DB_TABLE_PREFIX'),
+            'charset' => 'utf8',
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -104,13 +111,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        'allowedIPs' => [getenv('YII_DEBUG_IP')],
+        'allowedIPs' => [env('YII_DEBUG_IP')],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => [getenv('YII_DEBUG_IP')],
+        'allowedIPs' => [env('YII_DEBUG_IP')],
     ];
 }
 
