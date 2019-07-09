@@ -16,6 +16,7 @@ docker-compose exec app yii migrate --interactive=0
 ```
 
 5.Enter as admin by credentials `admin/admin` and change admin password
+
 ## Deploy without docker:
 1.Install LAMP/LEMP stack and redis
 
@@ -41,3 +42,13 @@ yii migrate
 ```
 
 8.Enter as admin by credentials `admin/admin` and change admin password
+
+## Tests:
+### Database
+By default database for tests will run together with app (`test_db` in `docker-compose.yml`).
+If you dont need tests you can remove this service.
+
+Before testing run migrations for test database
+```
+docker-compose exec app tests/bin/yii migrate --interactive=0
+```

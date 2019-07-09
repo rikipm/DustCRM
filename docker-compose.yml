@@ -16,11 +16,12 @@ services:
       MYSQL_DATABASE: dustcrm
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-#    volumes: # Uncomment this line if you want store database on host machine
+#    volumes: # Uncomment this lines if you want store database on host machine
 #      - ./db:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
+      PMA_HOSTS: db, test_db
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     ports:
       - 8080:80
@@ -28,3 +29,13 @@ services:
       - db
   redis:
     image: redis:latest
+  #Tests section:
+  test_db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: dustcrm_basic_tests
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+#      volumes: # Uncomment this lines if you want store test database on host machine
+#        - ./test_db:/var/lib/mysql

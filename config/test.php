@@ -12,7 +12,7 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'language' => 'en-US',
+    'language' => env('DEFAULT_LANGUAGE'),
     'components' => [
         'db' => $db,
         'mailer' => [
@@ -22,10 +22,14 @@ return [
             'basePath' => __DIR__ . '/../web/assets',
         ],
         'urlManager' => [
+            //'enablePrettyUrl' => true,
             'showScriptName' => true,
+            'rules' => require(__DIR__ . '/routes.php'),
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
+            'loginUrl' => ['auth/login'],
         ],
         'request' => [
             'cookieValidationKey' => 'test',
@@ -36,6 +40,19 @@ return [
                 'domain' => 'localhost',
             ],
             */
+        ],
+    ],
+    'as globalAccess'=>[
+        'class'=>'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'actions' => ['login', 'error'],
+                'allow' => true,
+            ],
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
         ],
     ],
     'params' => $params,
