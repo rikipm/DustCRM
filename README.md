@@ -44,6 +44,10 @@ yii migrate
 8.Enter as admin by credentials `admin/admin` and change admin password
 
 ## Tests:
+Run tests with
+```
+docker-compose exec app vendor/bin/codecept run
+```
 ### Database
 By default database for tests will run together with app (`test_db` in `docker-compose.yml`).
 If you dont need tests you can remove this service.
