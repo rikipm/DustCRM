@@ -12,7 +12,7 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'language' => env('DEFAULT_LANGUAGE'),
+    'language' => 'en-US',
     'components' => [
         'db' => $db,
         'mailer' => [
@@ -22,7 +22,7 @@ return [
             'basePath' => __DIR__ . '/../web/assets',
         ],
         'urlManager' => [
-            //'enablePrettyUrl' => true,
+            'enablePrettyUrl' => true,
             'showScriptName' => true,
             'rules' => require(__DIR__ . '/routes.php'),
         ],

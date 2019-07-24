@@ -20,4 +20,11 @@ class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
 
+    /*
+     * Analogue of "seeCurrentUrlEquals" method, but add "/index-test.php" in beggining of URI
+     */
+    public function seeCurrentUrlEqualsTestPrefix($uri)
+    {
+        return $this->seeCurrentUrlEquals('/index-test.php'.$uri);
+    }
 }
