@@ -13,6 +13,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use yii\web\Response;
 use Yii;
 
 class AuthController extends Controller
@@ -26,7 +27,7 @@ class AuthController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -37,7 +38,7 @@ class AuthController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -78,3 +79,4 @@ class AuthController extends Controller
         return $this->goHome();
     }
 }
+

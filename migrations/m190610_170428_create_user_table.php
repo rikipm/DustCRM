@@ -10,6 +10,9 @@ class m190610_170428_create_user_table extends Migration
 {
     /**
      * {@inheritdoc}
+     *
+     * @throws \yii\db\Exception if admin account cant be created
+     * @throws \yii\base\Exception if hash cant be generated
      */
     public function safeUp()
     {
