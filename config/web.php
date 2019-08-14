@@ -89,6 +89,12 @@ $config = [
         ],
     ],
 
+    'modules' => [
+        'inventory' => [
+            'class' => 'app\modules\inventory\Module',
+        ],
+    ],
+
     'as globalAccess'=>[
         'class'=>'yii\filters\AccessControl',
         'rules' => [
