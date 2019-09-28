@@ -16,8 +16,10 @@ services:
       MYSQL_DATABASE: dustcrm
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-#    volumes: # Uncomment this lines if you want store database on host machine
-#      - ./db:/var/lib/mysql
+    volumes:
+      - ./db:/var/lib/mysql
+    command:
+      mysqld --innodb-flush-method=littlesync --innodb-use-native-aio=OFF --log_bin=ON #Temporary workaround, because mariadb volume dont work proper way in win10 docker without this parameters.
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
