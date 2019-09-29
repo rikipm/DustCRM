@@ -6,7 +6,6 @@ services:
       - ./:/var/www/
       - ./docker/apache/sites-enabled/:/etc/apache2/sites-enabled/
       - ./docker/apache/ssl/:/usr/local/apache2/ssl/
-      - ./docker/apache/php.ini:/usr/local/etc/php/php.ini
     ports:
       - '80:80'
     depends_on:
