@@ -11,8 +11,8 @@ git clone --recursive https://github.com/rikipm/dustcrm.git
 4.Run commands
 ```
 docker-compose up -d
-docker-compose exec app composer update
-docker-compose exec app yii migrate --interactive=0
+docker-compose exec apache composer update
+docker-compose exec apache php yii migrate --interactive=0
 ```
 
 5.Enter as admin by credentials `admin/admin` and change admin password
@@ -50,11 +50,11 @@ If you dont need tests you can remove this service.
 
 Before testing run migrations for test database
 ```
-docker-compose exec app tests/bin/yii migrate --interactive=0
+docker-compose exec apache tests/bin/yii migrate --interactive=0
 ```
 ### Running tests
 Run tests with
 ```
-docker-compose exec app vendor/bin/codecept run
+docker-compose exec apache vendor/bin/codecept run
 ```
 for more options see [official codeception documentation](https://codeception.com/docs/modules/Yii2)
