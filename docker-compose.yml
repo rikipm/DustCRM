@@ -25,7 +25,6 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOSTS: db, test_db
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     ports:
       - 8080:80
     depends_on:
